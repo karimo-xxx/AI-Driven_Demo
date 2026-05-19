@@ -62,7 +62,7 @@ Erstelle ein Measure "Sales Above Average" in der Tabelle Sales, das die Anzahl 
 ### Ad-hoc Analyse
 
 ```
-Führe eine DAX-Query aus, die den Total Sales Amount pro Jahr anzeigt (basierend auf Date[Calendar Year]).
+Führe eine DAX-Query aus, die den Total Sales Amount pro Jahr anzeigt (basierend auf Date[Fiscal Year]).
 ```
 
 ### Top N Analyse
@@ -121,7 +121,7 @@ Blende alle Key-Spalten in der Tabelle Sales aus (isHidden = true), die nur für
 ### Berechnete Spalte erstellen
 
 ```
-Erstelle eine berechnete Spalte "Full Name" in der Tabelle Customer, die Vorname und Nachname kombiniert.
+Erstelle eine berechnete Spalte "Customer Location" in der Tabelle Customer, die City und Country-Region kombiniert (z.B. "Berlin, Germany").
 ```
 
 ---
@@ -170,7 +170,7 @@ Prüfe alle Measures auf potenzielle Performance-Probleme. Gibt es Measures, die
 ### RLS-Rolle erstellen
 
 ```
-Erstelle eine Security Role "Regional Sales Manager", die den Zugriff auf Sales Territory[Sales Territory Region] = "Europe" einschränkt.
+Erstelle eine Security Role "Regional Sales Manager", die den Zugriff auf Sales Territory[Region] = "Europe" einschränkt.
 ```
 
 ---
@@ -181,10 +181,10 @@ Erstelle eine Security Role "Regional Sales Manager", die den Zugriff auf Sales 
 
 ```
 Ich möchte eine Profitabilitäts-Analyse aufbauen:
-1. Erstelle ein Measure "Total Cost" (Summe von Sales[Total Product Cost])
-2. Erstelle ein Measure "Gross Profit" (Total Sales Amount - Total Cost)
-3. Erstelle ein Measure "Gross Margin %" (Gross Profit / Total Sales Amount), Format "0.00%"
-4. Führe eine DAX-Query aus, die Gross Margin % pro Product Category zeigt
+1. Zeige mir die bestehenden Measures "Total Cost", "Gross Profit" und "Gross Profit Margin" in der Tabelle Sales
+2. Erstelle ein Measure "Gross Profit Margin YTD" (Year-to-Date Gross Profit Margin), Format "0.00%"
+3. Erstelle ein Measure "Cost Ratio %" (Total Cost / Total Sales), Format "0.00%"
+4. Führe eine DAX-Query aus, die Gross Profit Margin pro Fiscal Year zeigt
 ```
 
 ---
