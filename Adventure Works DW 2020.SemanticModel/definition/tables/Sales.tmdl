@@ -64,11 +64,6 @@ table Sales
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: c9a2b5d0-1e6f-2b4c-7d0a-f3e5c6b89012
 
-	/// Year-to-Date Sales basierend auf Total Sales
-	measure 'YTD Sales' = CALCULATE([Total Sales], DATESYTD('Date'[Date]))
-		formatString: #,0.00 €
-		lineageTag: 6acb2265-4cd1-4a35-b73b-1689b0694d8a
-
 	column SalesOrderLineKey
 		dataType: int64
 		isHidden
