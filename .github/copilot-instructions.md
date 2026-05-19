@@ -28,6 +28,37 @@ Always query the live model through the `powerbi-modeling-mcp` MCP server tools 
 - Time intelligence measures must reference the `Date` table (marked as date table)
 - Format strings: currency as `"#,0.00 €"`, percentages as `"0.00%"`
 
+## DAX Query Result Display
+
+When executing DAX queries, always present results in this format:
+
+1. **Markdown table** — Results as a formatted table with thousands separators and decimal places
+2. **DAX query in a code block** — Show the executed query as a `dax` code block
+3. **Brief interpretation** — One or two sentences summarizing the results
+
+Example:
+
+| Fiscal Year | Total Sales Amount |
+|-------------|-------------------|
+| FY2018 | 23.860.891,17 |
+
+```dax
+EVALUATE
+SUMMARIZECOLUMNS(...)
+```
+
+> Number format: German locale — dot as thousands separator, comma as decimal separator.
+
+### Accessing DAX Result Files
+
+MCP tool resource URIs are often inaccessible after execution. The actual CSV results are stored at:
+
+```
+%LOCALAPPDATA%\Temp\PowerBIModelingMCP\QueryResults\dax_query_result_<timestamp>.csv
+```
+
+After `Execute`, read the most recent CSV file from this directory (sorted by `LastWriteTime`) to reliably display results.
+
 ## Data Modeling Conventions
 
 - Fact tables: `Sales`, `Currency Rate`
@@ -48,19 +79,9 @@ Always query the live model through the `powerbi-modeling-mcp` MCP server tools 
 ```
 .github/
   copilot-instructions.md     ← This file (project-wide, always on)
-  agents/                     ← Custom agent personas
-  skills/                     ← Multi-step workflow skills
 Adventure Works DW 2020.Report/
 Adventure Works DW 2020.SemanticModel/
 ```
-
-## Available Copilot Customization Artifacts
-
-| Artifact | Location | Purpose |
-|----------|----------|---------|
-| Prompt-Engineer agent | `.github/agents/Prompt-Engineer.agent.md` | Create/review Copilot customization files |
-| Modell-Auditor agent | `.github/agents/Modell-Auditor.agent.md` | Read-only audit of the semantic model against project conventions |
-| Prompt-Engineering skill | `.github/skills/prompt-engineering/` | Templates and checklists for all primitives |
 
 ## General Guidelines
 
