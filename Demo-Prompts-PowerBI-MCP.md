@@ -38,21 +38,21 @@ Erstelle ein Measure "Total Sales Amount" in der Tabelle Sales, das die Summe vo
 ### Time Intelligence Measure
 
 ```
-Erstelle ein Measure "YTD Sales" in der Tabelle Sales, das den Year-to-Date Wert von [Total Sales Amount] berechnet. Nutze die Date-Tabelle.
+Erstelle ein Measure "YTD Sales" in der Tabelle Sales, das den Year-to-Date Umsatz basierend auf der Spalte Sales[Sales Amount] und der Date-Tabelle berechnet. Formatierung: "#,0.00 €"
 ```
 
 ### Vorjahresvergleich
 
 ```
-Erstelle zwei Measures in der Tabelle Sales:
-1. "PY Sales" — Sales Amount des Vorjahres
+Erstelle zwei Measures in der Tabelle Sales, basierend auf der Spalte Sales[Sales Amount] und der Date-Tabelle:
+1. "PY Sales" — Umsatz des Vorjahres, Format "#,0.00 €"
 2. "Sales YoY %" — Prozentuale Veränderung zum Vorjahr, Format "0.00%"
 ```
 
 ### Komplexes Measure mit VAR/RETURN
 
 ```
-Erstelle ein Measure "Sales Above Average" in der Tabelle Sales, das die Anzahl der Produkte zählt, deren Sales Amount über dem Durchschnitt aller Produkte liegt. Nutze VAR/RETURN.
+Erstelle ein Measure "Sales Above Average" in der Tabelle Sales, das die Anzahl der Produkte zählt, deren Umsatz (Sales[Sales Amount]) über dem Durchschnitt aller Produkte liegt. Nutze VAR/RETURN.
 ```
 
 ---
@@ -62,7 +62,7 @@ Erstelle ein Measure "Sales Above Average" in der Tabelle Sales, das die Anzahl 
 ### Ad-hoc Analyse
 
 ```
-Führe eine DAX-Query aus, die den Total Sales Amount pro Jahr anzeigt (basierend auf Date[Fiscal Year]).
+Führe eine DAX-Query aus, die den Gesamtumsatz (Sales[Sales Amount]) pro Fiscal Year anzeigt.
 ```
 
 ### Top N Analyse
@@ -180,11 +180,10 @@ Erstelle eine Security Role "Regional Sales Manager", die den Zugriff auf Sales 
 ### Kompletter Workflow
 
 ```
-Ich möchte eine Profitabilitäts-Analyse aufbauen:
-1. Zeige mir die bestehenden Measures "Total Cost", "Gross Profit" und "Gross Profit Margin" in der Tabelle Sales
-2. Erstelle ein Measure "Gross Profit Margin YTD" (Year-to-Date Gross Profit Margin), Format "0.00%"
-3. Erstelle ein Measure "Cost Ratio %" (Total Cost / Total Sales), Format "0.00%"
-4. Führe eine DAX-Query aus, die Gross Profit Margin pro Fiscal Year zeigt
+Ich möchte eine Profitabilitäts-Analyse aufbauen. Erstelle folgende Measures in der Tabelle Sales:
+1. "Gross Profit Margin YTD" — Year-to-Date Bruttomarge basierend auf Sales[Sales Amount] und Sales[Total Product Cost], Format "0.00%"
+2. "Cost Ratio %" — Anteil der Produktkosten am Umsatz, Format "0.00%"
+Führe danach eine DAX-Query aus, die die Bruttomarge pro Fiscal Year zeigt.
 ```
 
 ---
